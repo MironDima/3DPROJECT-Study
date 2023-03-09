@@ -13,6 +13,7 @@ module.exports = {
 		static: {
 			directory: './dist',
 			watch: true
-		}
+		},
+		open: true     //чтобы октрывало по команде
 	}
 }
