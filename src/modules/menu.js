@@ -1,12 +1,11 @@
 const menu = () => {
 	const menuBtn = document.querySelector('.menu')
-	console.log(menuBtn);
 	const menu = document.querySelector('menu')
-	console.log(menu);
 	const closeBtn = menu.querySelector('.close-btn')
-	console.log(closeBtn);
 	const menuItems = document.querySelectorAll('ul > li > a')
-	console.log(menuItems);
+	const anchorBtnService = document.querySelectorAll('a[href = "#service-block"]')
+	console.log(anchorBtnService);
+
 
 	const handleMenu = () => {
 		menu.classList.toggle('active-menu')
@@ -17,6 +16,29 @@ const menu = () => {
 
 	menuItems.forEach(menuItems => {   								 //перебираем мееню			
 		menuItems.addEventListener('click', handleMenu)
+		menuItems.addEventListener('click', (event) => {
+			event.preventDefault()
+			const blockId = menuItems.getAttribute('href').substring(1)
+			console.log(blockId);
+			document.getElementById(blockId).scrollIntoView({
+				behavior: 'smooth',
+				block: "center",
+				inline: 'center'
+			})
+		})
 	})
+
+	anchorBtnService.forEach(btn => {
+		btn.addEventListener('click', (event) =>{
+		event.preventDefault()
+		const  btnSecvice = btn.getAttribute('href').substring(1)
+		document.getElementById(btnSecvice).scrollIntoView({
+			behavior: 'smooth',
+			block: 'center'
+		})
+		})
+	})
+
+
 }
 export default menu
