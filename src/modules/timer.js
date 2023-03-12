@@ -20,16 +20,13 @@ const timer = (deadLine) => {
 	const updateClock = () => {
 		let getTime = getTimeRemaining()
 		if (getTime.timeRemainig > 0) {
-			console.log(getTime.timeRemainig);
 			timerDays.textContent = getTime.days
 			timerHours.textContent = getTime.hours
 			timerMinute.textContent = getTime.minutes
 			timerSeconds.textContent = getTime.seconds
 		}
-		console.log(getTime);
 		if (getTime.timeRemainig <= 0) {
 			clearInterval(idSetInterval)
-			console.log(getTime);
 		}																													//у сет интервала есть неоябз параметр,который переадеься в фнукциb
 	}
 	idSetInterval = setInterval(updateClock, 1000)
