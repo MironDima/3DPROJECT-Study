@@ -9,16 +9,16 @@ const modal = () => {
 	let scale = 0
 
 	modalWindow.style.transform = `translateX(${count = -30}%)`
-	// modalWindow.style.transform = `scale(${scale = 0.1})`
+	modalWindow.style.transform = `scale(${scale = 0.1})`
 	const showModal = () => {
 		if (width >= 768) {
 			timeOut = requestAnimationFrame(showModal)
 			count++
-			scale++
-			// if(scale < 53){
-			// 	modalWindow.style.transform = `scale(${scale = 1.8})`;
-			// 	console.log(scale);
-			// }	
+			scale += 0.1
+			if(scale < 53){
+				modalWindow.style.transform = `scale(${scale = 1.8})`;
+				console.log(scale);
+			}	
 			if (count <= -14) {
 				modal.style.display = 'block';
 				modalWindow.style.transform = `translate(${count * 2}%,50%)`;
