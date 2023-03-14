@@ -1,7 +1,5 @@
 const checkForms = () => {
-
 	const checkCulcalate = () => {
-
 		const calcSquare = document.querySelector('.calc-square')
 		const calcCount = document.querySelector('.calc-count')
 		const calcDay = document.querySelector('.calc-day')
@@ -15,8 +13,7 @@ const checkForms = () => {
 
 	}
 	checkCulcalate()
-
-
+	
 	const checkFormOne = () => {
 
 		const formOne = document.querySelectorAll('form')

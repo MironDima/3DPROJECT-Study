@@ -27,6 +27,7 @@ const modal = () => {
 				modalWindow.style.transform = `translate(${count * 2}%,50%)`;
 				modalWindow.style.opacity = '0.90';
 			}
+			
 			else {
 				cancelAnimationFrame(timeOut);
 			}
