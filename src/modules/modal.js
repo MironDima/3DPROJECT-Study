@@ -16,7 +16,10 @@ const modal = () => {
 			count++
 			scale += 0.1
 			if(scale < 53){
-				modalWindow.style.transform = `scale(${scale = 1.8})`;
+				modalWindow.style.transform = `scale(${scale = 1.1})`;
+				modalWindow.style.position ="absolute"
+				modalWindow.style.top ="23%"
+				modalWindow.style.left ="34%"
 				console.log(scale);
 			}	
 			if (count <= -14) {
