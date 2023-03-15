@@ -28,41 +28,34 @@ const checkForms = () => {
 
 				if (/^[а-яА-ЯёЁ\-\s]/gi.test(formName.value)) {
 					alert(`Ваше имя ${formName.value}`)
-					formName.style.border = '1px solid green'
 					formName.value = ''
 				} else {
-					formName.style.border = '1px solid red'
 					alert('Вводите имя буквами кирилицы')
 					formName.value = ''
 				}
 
-				if (/^[\w\@\-\_\.\!\~\*\']/gi.test(formEmail.value)) {
+				if (/(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi.test(formEmail.value)) {
 					alert(`Ваш email ${formEmail.value}`)
-					formEmail.style.border = '1px solid green'
+					console.log(formEmail.value);
 					formEmail.value = ''
 				} else {
-					formEmail.style.border = '1px solid red'
 					alert('Вводите email только латинскими буквами')
+					console.log(formEmail.value);
 					formEmail.value = ''
 				}
 
 				if (/^[\d(\)]*[\d\-]{4,15}/gi.test(formPhone.value)) {
 					alert(`Ваш номер ${formPhone.value}`)
-					formPhone.style.border = '1px solid green'
 					formPhone.value = ''
 				} else {
-					formPhone.style.border = '1px solid red'
 					alert('Вводите ваш номер цифрами от 4 до 15')
 					formPhone.value = ''
 				}
-
+				
 				if (/^[а-яА-ЯёЁ\-\s]/gi.test(formText.value)) {
-					formText.style.border = '1px solid green'
 					console.log(formText.value);
 				} else {
-					formText.style.border = '1px solid red'
-					alert('Вводите текст буквами кириллицы')
-					
+					alert('Вводите текст буквами кириллицы')					
 				}
 			})
 		})
@@ -70,10 +63,5 @@ const checkForms = () => {
 	}
 	checkFormOne()
 }
-
 export default checkForms
 
-
-
-
-// requaried

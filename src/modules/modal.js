@@ -15,16 +15,17 @@ const modal = () => {
 			timeOut = requestAnimationFrame(showModal)
 			count++
 			scale += 0.1
-			if(scale < 53){
-				modalWindow.style.transform = `scale(${scale = 1.1})`;
+			if(scale < 63){
+				modalWindow.style.transform = `scale(${scale = 1.5})`;
+				modalWindow.style.transform =  `translate(-50%, -50%)`
 				modalWindow.style.position ="absolute"
-				modalWindow.style.top ="23%"
-				modalWindow.style.left ="34%"
+				modalWindow.style.top ="50%"
+				modalWindow.style.left ="50%"
 				console.log(scale);
 			}	
-			if (count <= -14) {
+			if (count <= -10) {
 				modal.style.display = 'block';
-				modalWindow.style.transform = `translate(${count * 2}%,50%)`;
+				modalWindow.style.transform = `translate(${count * 2}%)`;
 				modalWindow.style.opacity = '0.90';
 			}
 			
@@ -33,7 +34,7 @@ const modal = () => {
 			}
 		}
 		else {
-			modalWindow.style.transform = `translate(${count = -15}%,32%)`;
+			modalWindow.style.transform = `translate(${count = -15}%,20%)`;
 			modal.style.display = 'block';
 			modalWindow.style.opacity = '0.88';
 		}
