@@ -13,7 +13,7 @@ const checkForms = () => {
 
 	}
 	checkCulcalate()
-	
+
 	const checkFormOne = () => {
 
 		const formOne = document.querySelectorAll('form')
@@ -24,39 +24,49 @@ const checkForms = () => {
 				const formEmail = item.querySelector('input[type="email"]')
 				const formPhone = item.querySelector('input[type="tel"]')
 				const formText = item.querySelector('input.mess')
-				console.log(formText);
 
-				if (/^[а-яА-ЯёЁ\-\s]/gi.test(formName.value)) {
+				if (/![^а-яА-ЯёЁ\-\s]/gi.test(formName.value)) {
+					formName.style.border = '1px solid green'
 					alert(`Ваше имя ${formName.value}`)
 					formName.value = ''
 				} else {
+					formName.style.border = '1px solid red'
 					alert('Вводите имя буквами кирилицы')
 					formName.value = ''
 				}
 
 				if (/(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi.test(formEmail.value)) {
+					formEmail.style.border = '1px solid green'
 					alert(`Ваш email ${formEmail.value}`)
-					console.log(formEmail.value);
 					formEmail.value = ''
 				} else {
+					formEmail.style.border = '1px solid red'
 					alert('Вводите email только латинскими буквами')
-					console.log(formEmail.value);
 					formEmail.value = ''
 				}
 
-				if (/^[\d(\)]*[\d\-]{4,15}/gi.test(formPhone.value)) {
+				if (/[\d(\)]*[\d\-]{4,15}/gi.test(formPhone.value)) {
+					formPhone.style.border = '1px solid green'
 					alert(`Ваш номер ${formPhone.value}`)
 					formPhone.value = ''
 				} else {
+					formPhone.style.border = '1px solid red'
 					alert('Вводите ваш номер цифрами от 4 до 15')
 					formPhone.value = ''
 				}
-				
-				if (/^[а-яА-ЯёЁ\-\s]/gi.test(formText.value)) {
-					console.log(formText.value);
-				} else {
-					alert('Вводите текст буквами кириллицы')					
+
+				if (formText) {
+					if (/![^а-яА-ЯёЁ\-\s]/gi.test(formText.value)) {
+						formText.style.border = '1px solid green'
+						console.log(formText.value);
+						formText.value = ''
+					} else {
+						formText.style.border = '1px solid red'
+						alert('Вводите текст буквами кириллицы')
+						formText.value = ''
+					}
 				}
+
 			})
 		})
 
