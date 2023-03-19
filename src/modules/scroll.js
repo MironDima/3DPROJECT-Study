@@ -2,7 +2,6 @@ const scroll = () => {
 	const menuItems = document.querySelectorAll('ul > li > a')
 	const anchorBtnService = document.querySelectorAll('a[href = "#service-block"]')
 
-
 	menuItems.forEach(menuItems => {
 		menuItems.addEventListener('click',(e) => {
 			e.preventDefault()
@@ -15,7 +14,6 @@ const scroll = () => {
 		})
 	})
 
-
 	anchorBtnService.forEach(btn => {
 		btn.addEventListener('click', (e) => {
 			e.preventDefault()
@@ -26,8 +24,6 @@ const scroll = () => {
 			})
 		})
 	})
-
-
 }
 
 export default scroll
