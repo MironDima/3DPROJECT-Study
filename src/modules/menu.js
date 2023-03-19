@@ -4,41 +4,28 @@ const menu = () => {
 	const closeBtn = menu.querySelector('.close-btn')
 	const menuItems = document.querySelectorAll('ul > li > a')
 	const anchorBtnService = document.querySelectorAll('a[href = "#service-block"]')
-	console.log(anchorBtnService);
+	const main = document.querySelector('main')
 
 
 	const handleMenu = () => {
 		menu.classList.toggle('active-menu')
 	}
 
-	menuBtn.addEventListener('click', handleMenu)  					//меню кнопка
-	closeBtn.addEventListener('click', handleMenu)   				// x закрытие
-
-	menuItems.forEach(menuItems => {   								 //перебираем мееню			
-		menuItems.addEventListener('click', handleMenu)
-		menuItems.addEventListener('click', (event) => {
-			event.preventDefault()
-			const blockId = menuItems.getAttribute('href').substring(1)
-			console.log(blockId);
-			document.getElementById(blockId).scrollIntoView({
-				behavior: 'smooth',
-				block: "center",
-				inline: 'center'
-			})
-		})
+	menu.addEventListener('click', (e) => {
+		if (e.target.classList.contains('close-btn')) {
+			handleMenu()
+		}
+		if (e.target.matches('ul>li>a')) {
+			handleMenu()
+		}
 	})
 
-	anchorBtnService.forEach(btn => {
-		btn.addEventListener('click', (event) =>{
-		event.preventDefault()
-		const  btnSecvice = btn.getAttribute('href').substring(1)
-		document.getElementById(btnSecvice).scrollIntoView({
-			behavior: 'smooth',
-			block: 'center'
-		})
-		})
+	main.addEventListener('click', (e) => {
+		if (e.target.closest('.menu')) {
+			console.log(e.target);
+			handleMenu()
+		}
 	})
-
 
 }
 export default menu
