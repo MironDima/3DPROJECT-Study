@@ -10,7 +10,6 @@ const addDots = () => {
 		li.classList.add('dot')
 		if (index === 0) {
 			li.classList.add('dot-active')
-			console.log(li);
 		}
 		ul.append(li)
 
