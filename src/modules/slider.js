@@ -4,28 +4,25 @@ const slider = (classSlideBlock, classSlides) => {
 
 	if (slideBlock && slides.length > 0) {
 		const dots = document.querySelectorAll('.dot')
-		console.log(slideBlock);
-		console.log(slides);
-
 		let timeInteval = 2000
 		let currentSlide = 0
 		let intarval
 
 		const prevSlide = (elemsArr, index, slideClassActive = 'portfolio-item-active', dotclassActive = 'dot-active') => {
 			elemsArr[index].classList.remove(slideClassActive)
-			elemsArr[index].classList.remove(dotclassActive) 							//удаляем у действующего слайда класс
+			elemsArr[index].classList.remove(dotclassActive) 									//удаляем у действующего слайда класс
 		}
 
 		const nextSlide = (elemsArr, index, slideClassActive = 'portfolio-item-active', dotclassActive = 'dot-active') => {
 			elemsArr[index].classList.add(slideClassActive)
-			elemsArr[index].classList.add(dotclassActive)  						 //добавляем новому слайду класс
+			elemsArr[index].classList.add(dotclassActive)  						 				//добавляем новому слайду класс
 		}
 
 		const autoSlide = () => {
 			prevSlide(slides, currentSlide, 'portfolio-item-active')
 			prevSlide(dots, currentSlide, 'dot-active')
 			currentSlide++
-			if (currentSlide >= slides.length) {    							 //  делаем проверку что обновлялся слайдер
+			if (currentSlide >= slides.length) {    							 				//  делаем проверку что обновлялся слайдер
 				currentSlide = 0
 			}
 			nextSlide(slides, currentSlide, 'portfolio-item-active')
@@ -40,8 +37,8 @@ const slider = (classSlideBlock, classSlides) => {
 			clearInterval(intarval)
 		}
 
-		slideBlock.addEventListener('click', (e) => {			//управление
-			e.preventDefault()
+		slideBlock.addEventListener('click', (e) => {												//управление
+			e.preventDefault()	
 
 			if (!e.target.matches('.dot, .portfolio-btn')) {
 				return
