@@ -1,7 +1,5 @@
 import animateNum from './animateNum'
-
 const culc = (price = 100) => {
-
 	const calcBlock = document.querySelector('.calc-block')
 	const culcType = document.querySelector('.calc-type')
 	const calcSquare = document.querySelector('.calc-square')
@@ -13,7 +11,6 @@ const culc = (price = 100) => {
 	const countCulc = () => {
 		const culcTypeValue = +culcType.options[culcType.selectedIndex].value
 		const calcSquareValue = calcSquare.value
-		
 		let culcCountValue = 1
 		let calcDayValue = 1
 
@@ -29,19 +26,15 @@ const culc = (price = 100) => {
 			console.log(calcDay.value);
 		}
 
-
 		if (culcType.value && calcSquare.value) {
 			console.log(culcType.value);
 			console.log(calcSquare.value);
 			totalPrice = price * culcTypeValue * calcSquareValue * culcCountValue * calcDayValue
-			animateNum(totalPrice,total)
+			animateNum(totalPrice, total)
 		} else {
 			totalPrice = 0
 		}
-		
 		total.textContent = totalPrice
-		
-		
 	}
 
 	calcBlock.addEventListener('input', (e) => {
@@ -49,11 +42,9 @@ const culc = (price = 100) => {
 		if (e.target === culcType || e.target === calcSquare ||
 			e.target === calcCount || e.target === calcDay) {
 			countCulc()
-			
-		}
 
+		}
 	})
 
 }
-
 export default culc
