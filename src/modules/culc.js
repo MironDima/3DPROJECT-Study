@@ -1,4 +1,4 @@
-import animateNum from './animateNum'
+import animateNum from './animateNumCulc'
 const culc = (price = 100) => {
 	const calcBlock = document.querySelector('.calc-block')
 	const culcType = document.querySelector('.calc-type')

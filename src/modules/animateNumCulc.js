@@ -10,7 +10,7 @@ const animateNum = (numberTotalPrice, spanElement) => {
 		let timeInterval = Math.round(time / (numTotalPrice / step))
 
 		interval = setInterval(() => {
-			n = n + step
+			n = n  + step
 			console.log(`переданное число ${n}`);
 			console.log(`переданное шаги ${step}`);
 			console.log(`переданное num ${numTotalPrice}`);
