@@ -8,7 +8,7 @@ import addDots from './modules/adddots'
 import slider from './modules/slider'
 import culc from './modules/culc'
 
-timer('24 march 2023')
+timer('29 march 2023')
 menu()
 scroll()
 modal()

@@ -1,11 +1,10 @@
 const animateNum = (numberTotalPrice, spanElement) => {
 	let time = 1 //ms  								 	//время выполнения прокрутки
-	let step = 1;										//шаг прокрутки
+	let step = 20										//шаг прокрутки
 	let interval
-	let n
-
+	
 	const outSpan = (numTotalPrice, spanElem) => {								//number - число до которого будет идти прокуртка
-		n = 0;
+		let n = 0;
 		console.dir(spanElem);
 		let timeInterval = Math.round(time / (numTotalPrice / step))
 
@@ -18,7 +17,7 @@ const animateNum = (numberTotalPrice, spanElement) => {
 			if (n === numTotalPrice) {
 				clearInterval(interval)
 			}
-			spanElem.textContent = n
+			spanElem.textContent =  n 
 		}, timeInterval)
 	}
 	outSpan(numberTotalPrice, spanElement)
