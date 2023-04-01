@@ -3,20 +3,43 @@ const sendForm = ({ formId, someElem = [] }) => {
 		const form = document.getElementById(forms)
 		let statusBlock = document.createElement('div');
 
-	
 		const loadText = 'Загрузка...'
 		const successText = 'Успешно! С вами свяжется наш специалист'
 		const errorText = 'Ошибка..'
 
 
-
 		const validate = (list) => {
 			let sucsess = true
-			// list.forEach(input => {
-			// 	if (input.classList.contains('sucsess')) {
-			// 		sucsess = false
-			// 	}
-			// })
+			const inputText = list[0]
+			const inputEmail = list[1]
+			const inputPhone = list[2]
+			const inputMessage = list[3]
+
+			list.forEach(input => {
+				console.log(input.type);
+				if (/^[а-яА-ЯёЁ\s]+[а-яА-ЯёЁ]*$/gi.test(inputText.value) && inputText.value !== '') {
+					sucsess = true
+				} else {
+					sucsess = false
+				}
+				if (/(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi.test(inputEmail.value) && inputEmail.value !== '') {
+					sucsess = true
+				} else {
+					sucsess = false
+				}
+				if (/[\d\(\)]*[\d\-]{4,15}/gi.test(inputPhone.value) && inputPhone.value !== '') {
+					sucsess = true
+				} else {
+					sucsess = false
+				}
+				if (inputMessage) {
+					if (/^[а-яА-ЯёЁ\s\d\,\.\;\:\...\!\?\-\(\)\"]+[а-яА-ЯёЁ\d\,\.\;\:\...\!\?\-\(\)\"]*$/gi.test(inputMessage.value) && inputMessage.value !== '') {
+						sucsess = true
+					} else {
+						sucsess = false
+					}
+				}
+			})
 			return sucsess
 		}
 
@@ -29,6 +52,8 @@ const sendForm = ({ formId, someElem = [] }) => {
 				}
 			}).then(response => response.json())
 		}
+
+
 
 		const submitForm = () => {
 			const formElements = form.querySelectorAll('input')
@@ -62,9 +87,12 @@ const sendForm = ({ formId, someElem = [] }) => {
 					})
 					.catch(error => statusBlock.textContent = errorText)
 			} else {
-				alert('Данные не введены')
+				alert('Данные не валидны!')
+				statusBlock.textContent = errorText
 			}
 		}
+
+
 
 		try {
 			if (!form) {

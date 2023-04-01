@@ -42,7 +42,6 @@ const culc = (price = 100) => {
 		if (e.target === culcType || e.target === calcSquare ||
 			e.target === calcCount || e.target === calcDay) {
 			countCulc()
-
 		}
 	})
 

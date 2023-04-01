@@ -36,7 +36,7 @@ const checkForms = () => {
 
 				if (/^[а-яА-ЯёЁ\s]+[а-яА-ЯёЁ]*$/gi.test(formName.value)) {
 					formName.style.border = '1px solid green'
-					alert(`Ваше имя ${formName.value}`)
+					
 				} else {
 					formName.style.border = '1px solid red'
 					alert('Вводите имя буквами кирилицы')
@@ -44,7 +44,7 @@ const checkForms = () => {
 
 				if (/(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi.test(formEmail.value)) {
 					formEmail.style.border = '1px solid green'
-					alert(`Ваш email ${formEmail.value}`)
+					
 				} else {
 					formEmail.style.border = '1px solid red'
 					alert('Вводите email только латинскими буквами')
@@ -52,7 +52,7 @@ const checkForms = () => {
 
 				if (/[\d\(\)]*[\d\-]{4,15}/gi.test(formPhone.value)) {
 					formPhone.style.border = '1px solid green'
-					alert(`Ваш номер ${formPhone.value}`)
+					
 				} else {
 					formPhone.style.border = '1px solid red'
 					alert('Вводите ваш номер цифрами от 4 до 15')
@@ -93,7 +93,6 @@ const checkForms = () => {
 						})
 					}
 
-					
 					if (event.target.type === 'email') {
 						const changeElem = /[^\d\w\-\~\_\!\'\s\.\*\@]/gi
 						event.target.value = event.target.value.replace(changeElem, "")
@@ -105,19 +104,13 @@ const checkForms = () => {
 						event.target.value = event.target.value.replace(changeElem, "")
 						event.target.value = deleteSpace(event.target.value)
 					}
-
-					
 				})
 
 			})
 
 		})
-
-
 	}
 	checkFormOne()
-
-
 }
 export default checkForms
 
