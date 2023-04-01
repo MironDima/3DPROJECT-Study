@@ -1,10 +1,14 @@
 const sendForm = ({ formId, someElem = [] }) => {
 	formId.forEach(forms => {
 		const form = document.getElementById(forms)
-		const statusBlock = document.createElement('div')
+		let statusBlock = document.createElement('div');
+
+	
 		const loadText = 'Загрузка...'
-		const errorText = 'Ошибка..'
 		const successText = 'Успешно! С вами свяжется наш специалист'
+		const errorText = 'Ошибка..'
+
+
 
 		const validate = (list) => {
 			let sucsess = true
@@ -30,6 +34,7 @@ const sendForm = ({ formId, someElem = [] }) => {
 			const formElements = form.querySelectorAll('input')
 			const formData = new FormData(form)
 			const formBody = {}   								//собираем обьект
+
 
 			statusBlock.textContent = loadText
 			form.append(statusBlock)

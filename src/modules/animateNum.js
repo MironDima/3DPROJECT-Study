@@ -1,6 +1,6 @@
 const animateNum = (numberTotalPrice, spanElement) => {
 	let time = 1 //ms  								 	//время выполнения прокрутки
-	let step = 20										//шаг прокрутки
+	let step = 40										//шаг прокрутки
 	let interval
 	
 	const outSpan = (numTotalPrice, spanElem) => {								//number - число до которого будет идти прокуртка
