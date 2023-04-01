@@ -21,11 +21,10 @@ const checkForms = () => {
 				let regSpace = /^[\s\-]+|[\s\-]+$/
 				str = str.replace(regSpace, "")
 
-				 regSpace = /\-{2,}/g
+				regSpace = /\-{2,}/g
 				str = str.replace(regSpace, "-")
 				return str
 			}
-
 			const formName = item.querySelector('input[type="text"]')
 			const formEmail = item.querySelector('input[type="email"]')
 			const formPhone = item.querySelector('input[type="tel"]')
@@ -34,78 +33,80 @@ const checkForms = () => {
 
 			item.addEventListener('submit', (event) => {
 				event.preventDefault()
-				
-				if (/^[а-яА-ЯёЁ\s\-]+[а-яА-ЯёЁ]*$/gi.test(formName.value)) {
+
+				if (/^[а-яА-ЯёЁ\s]+[а-яА-ЯёЁ]*$/gi.test(formName.value)) {
 					formName.style.border = '1px solid green'
 					alert(`Ваше имя ${formName.value}`)
-					formName.value = ''
 				} else {
 					formName.style.border = '1px solid red'
 					alert('Вводите имя буквами кирилицы')
-					formName.value = ''
 				}
 
 				if (/(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi.test(formEmail.value)) {
 					formEmail.style.border = '1px solid green'
 					alert(`Ваш email ${formEmail.value}`)
-					formEmail.value = ''
 				} else {
 					formEmail.style.border = '1px solid red'
 					alert('Вводите email только латинскими буквами')
-					formEmail.value = ''
 				}
 
-				if (/[\d(\)]*[\d\-]{4,15}/gi.test(formPhone.value)) {
+				if (/[\d\(\)]*[\d\-]{4,15}/gi.test(formPhone.value)) {
 					formPhone.style.border = '1px solid green'
 					alert(`Ваш номер ${formPhone.value}`)
-					formPhone.value = ''
 				} else {
 					formPhone.style.border = '1px solid red'
 					alert('Вводите ваш номер цифрами от 4 до 15')
-					formPhone.value = ''
 				}
 
 				if (formText) {
-					if (/^[а-яА-ЯёЁ\s\-]+[а-яА-ЯёЁ]*$/gi.test(formText.value)) {
+					if (/^[а-яА-ЯёЁ\s\d\,\.\;\:\...\!\?\-\(\)\"]+[а-яА-ЯёЁ\d\,\.\;\:\...\!\?\-\(\)\"]*$/gi.test(formText.value)) {
 						formText.style.border = '1px solid green'
 						console.log(formText.value);
-						formText.value = ''
+						// formText.value = ''
 					} else {
 						formText.style.border = '1px solid red'
 						alert('Вводите текст буквами кириллицы')
-						formText.value = ''
+						// formText.value = ''
 					}
 				}
-
 			})
 
 			item.querySelectorAll('input').forEach((input) => {
 
 				input.addEventListener('blur', (event) => {
-					if (event.target.type === 'text') {
-						const changeElem = /[^а-яА-ЯёЁ\-\s]/gi
+			
+
+					if(event.target.name === 'user_message'){
+						const changeElem = /[^а-яА-ЯёЁ\s\d\,\.\;\:\...\!\?\-\(\)\"]*/gi
 						event.target.value = event.target.value.replace(changeElem, "")
 						event.target.value = deleteSpace(event.target.value)
 						event.target.value = event.target.value.replace(/(\s|^)[а-яёa-z]/g, (str) => {
 							return str.toUpperCase()
-							console.log(str);
-						}) 
-
+						})
 					}
 
+					if (event.target.name === 'user_name') {
+						const changeElem = /[^а-яА-ЯёЁ\s]/gi
+						event.target.value = event.target.value.replace(changeElem, "")
+						event.target.value = deleteSpace(event.target.value)
+						event.target.value = event.target.value.replace(/(\s|^)[а-яёa-z]/g, (str) => {
+							return str.toUpperCase()
+						})
+					}
+
+					
 					if (event.target.type === 'email') {
 						const changeElem = /[^\d\w\-\~\_\!\'\s\.\*\@]/gi
 						event.target.value = event.target.value.replace(changeElem, "")
 						event.target.value = deleteSpace(event.target.value)
-						console.log(event.target.value);
 					}
 
 					if (event.target.type === 'tel') {
-						const changeElem = /[^\d\(\)\-]*/gi
+						const changeElem = /[^\d\+(\)\-]*/gi
 						event.target.value = event.target.value.replace(changeElem, "")
 						event.target.value = deleteSpace(event.target.value)
-						console.log(event.target.value);
 					}
+
 					
 				})
 

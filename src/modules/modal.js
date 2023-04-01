@@ -36,25 +36,18 @@ const modal = () => {
 			modalWindow.style.opacity = '0.88';
 		}
 	}
-	// const closeModal = () => {
-	// 	modal.style.display = 'none'
-	// 	count = -30
-	// 		cancelAnimationFrame(timeOut)
-		
-	// }
+	
+	
 	popupBtn.forEach(button => {
 		button.addEventListener('click', showModal)
 	})
 
-	// popupClose.addEventListener('click', closeModal)
-
-	modal.addEventListener('click', (e) => {
-		console.log(e.target.closest('.popup-content'));  //получаем null так как выше родительсеого класса у нас нет совпадений,делаем проверку
+	modal.addEventListener('click', (e) => {					//получаем null так как выше родительсеого класса у нас нет совпадений,делаем проверку
+	
 		if(!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')){
 			modal.style.display = 'none'
 			count = -30
 			cancelAnimationFrame(timeOut)
-			console.log('мимо');
 		}
 	})
 
