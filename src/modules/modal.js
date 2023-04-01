@@ -37,7 +37,7 @@ const modal = () => {
 		}
 	}
 	
-	
+
 	popupBtn.forEach(button => {
 		button.addEventListener('click', showModal)
 	})
