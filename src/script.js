@@ -19,11 +19,11 @@ addDots()
 slider('portfolio-content', 'portfolio-item')
 culc(200)
 sendForm({
-	formId: 'form1',
+	formId:['form1','form2','form3',],
 	someElem: [
 		{
 			type: 'block',
-			id: 'total'   			//итог калькулятора
+			id: 'total'   			
 		}
 	]
 })

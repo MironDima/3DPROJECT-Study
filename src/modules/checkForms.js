@@ -62,11 +62,10 @@ const checkForms = () => {
 					if (/^[а-яА-ЯёЁ\s\d\,\.\;\:\...\!\?\-\(\)\"]+[а-яА-ЯёЁ\d\,\.\;\:\...\!\?\-\(\)\"]*$/gi.test(formText.value)) {
 						formText.style.border = '1px solid green'
 						console.log(formText.value);
-						// formText.value = ''
+						
 					} else {
 						formText.style.border = '1px solid red'
 						alert('Вводите текст буквами кириллицы')
-						// formText.value = ''
 					}
 				}
 			})
