@@ -1,7 +1,6 @@
 import { animate } from "./helpers";
-
 const animateNum = (numberTotalPrice) => {
-	let total = document.getElementById('total')
+	let total = document.getElementById('total');
 
 	animate({
 		duration: 2000,
@@ -9,10 +8,8 @@ const animateNum = (numberTotalPrice) => {
 			return timeFraction
 		},
 		draw(progress) {
-			total.textContent = Math.round(progress * numberTotalPrice)
+			total.textContent = Math.round(progress * numberTotalPrice);
 		}
 	});
-
 }
-
 export default animateNum
