@@ -1,7 +1,6 @@
 const sendForm = ({ formId, someElem = [] }) => {
 	formId.forEach(forms => {
 		const form = document.getElementById(forms)
-
 		let prelouder = document.createElement('div')
 		prelouder.classList.add('prelouder')
 		prelouder.innerHTML = `<img src = "images/prelouder.gif" alt = "prelouder">`
@@ -9,6 +8,7 @@ const sendForm = ({ formId, someElem = [] }) => {
 		const successText = 'Успешно! С вами свяжется наш специалист';
 		const errorText = 'Ошибка..';
 		let statusBlock = document.createElement('div');
+		statusBlock.classList.add('inform')
 
 		const validate = (list) => {
 			let sucsess = true;
