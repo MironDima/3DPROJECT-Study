@@ -12,8 +12,8 @@ import sendForm from './modules/sendForm'
 timer('4 aprel 2023')
 menu()
 scroll()
-modal()
 checkForms()
+modal()
 tabs()
 addDots()
 slider('portfolio-content', 'portfolio-item')
@@ -27,3 +27,4 @@ sendForm({
 		}
 	]
 })
+

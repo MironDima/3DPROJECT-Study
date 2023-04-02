@@ -1,7 +1,12 @@
 const sendForm = ({ formId, someElem = [] }) => {
 	formId.forEach(forms => {
 		const form = document.getElementById(forms)
-		const loadText = 'Загрузка...';
+		// const loadText = 'Загрузка...';
+
+		let prelouder = document.createElement('div')
+		prelouder.classList.add('prelouder')
+		prelouder.innerHTML = `<img src = "images/prelouder.gif" alt = "prelouder">`
+
 		const successText = 'Успешно! С вами свяжется наш специалист';
 		const errorText = 'Ошибка..';
 		let statusBlock = document.createElement('div');
@@ -15,7 +20,7 @@ const sendForm = ({ formId, someElem = [] }) => {
 			list.forEach(input => {
 				const changeName = /^[а-яА-ЯёЁ\s]+[а-яА-ЯёЁ]*$/gi
 				const changeEmail = /(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi
-				const changePhone = /[\d\(\)\+]*[\d\-]{4,15}/gi
+				const changePhone = /([\d\(\)\+]*[\d\-]{4,15})/gi
 
 				if (changeName.test(inputName.value) && inputName.value !== '') {
 					sucsess = true;
@@ -27,7 +32,7 @@ const sendForm = ({ formId, someElem = [] }) => {
 				} else {
 					sucsess = false;
 				}
-				if (changePhone.test(inputPhone.value) && inputPhone.value !== '') {
+				if (changePhone.test(inputPhone.value) && inputPhone.value !== '' && inputPhone.length > 4) {
 					sucsess = true;
 				} else {
 					sucsess = false;
@@ -51,8 +56,13 @@ const sendForm = ({ formId, someElem = [] }) => {
 			const formData = new FormData(form);
 			const formBody = {}   												//собираем обьект
 
-			statusBlock.textContent = loadText;
+			// statusBlock.textContent = loadText;
+			form.append(prelouder)
+			setTimeout(() => {
+				prelouder.classList.add('hide-prelouder')
+			}, 1500)
 			form.append(statusBlock);
+
 
 			formData.forEach((val, key) => {
 				formBody[key] = val;
