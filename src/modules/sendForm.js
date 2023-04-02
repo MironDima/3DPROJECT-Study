@@ -1,7 +1,6 @@
 const sendForm = ({ formId, someElem = [] }) => {
 	formId.forEach(forms => {
 		const form = document.getElementById(forms)
-		// const loadText = 'Загрузка...';
 
 		let prelouder = document.createElement('div')
 		prelouder.classList.add('prelouder')
@@ -32,7 +31,7 @@ const sendForm = ({ formId, someElem = [] }) => {
 				} else {
 					sucsess = false;
 				}
-				if (changePhone.test(inputPhone.value) && inputPhone.value !== '' && inputPhone.length > 4) {
+				if (changePhone.test(inputPhone.value) && inputPhone.value !== '') {
 					sucsess = true;
 				} else {
 					sucsess = false;
@@ -54,15 +53,13 @@ const sendForm = ({ formId, someElem = [] }) => {
 		const submitForm = () => {
 			const formElements = form.querySelectorAll('input');
 			const formData = new FormData(form);
-			const formBody = {}   												//собираем обьект
+			const formBody = {}   																					//собираем обьект
 
-			// statusBlock.textContent = loadText;
 			form.append(prelouder)
 			setTimeout(() => {
 				prelouder.classList.add('hide-prelouder')
 			}, 1500)
 			form.append(statusBlock);
-
 
 			formData.forEach((val, key) => {
 				formBody[key] = val;
@@ -76,7 +73,6 @@ const sendForm = ({ formId, someElem = [] }) => {
 					formBody[elem.id] = elemTotalCulc.value;
 				}
 			})
-
 
 			if (!document.querySelector("#form2-message").value.trim()) {							//чтобы сообщение не уходило на отправку-костыль
 				delete formBody.user_message;

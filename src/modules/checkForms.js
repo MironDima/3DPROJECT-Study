@@ -41,7 +41,7 @@ const checkForms = () => {
 					alert('Вводите имя буквами кирилицы');
 				}
 
-				if (/(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi.test(formEmail.value) && formEmail.value !== '') {
+				if (/(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi.test(formEmail.value)) {
 					formEmail.style.border = '1px solid green';
 
 				} else {
@@ -96,7 +96,7 @@ const checkForms = () => {
 					}
 
 					if (event.target.type === 'tel') {
-						const changeElem = /[^\d\+(\)\-\+]*/gi;
+						const changeElem = /[^\d\+(\)\-]*/gi;
 						event.target.value = event.target.value.replace(changeElem, "");
 						event.target.value = deleteSpace(event.target.value);
 					}
