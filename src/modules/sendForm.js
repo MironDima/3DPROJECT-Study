@@ -1,40 +1,38 @@
 const sendForm = ({ formId, someElem = [] }) => {
 	formId.forEach(forms => {
-		const form = document.getElementById(forms)
-		let prelouder = document.createElement('div')
-		prelouder.classList.add('prelouder')
-		prelouder.innerHTML = `<img src = "images/prelouder.gif" alt = "prelouder">`
-
+		const form = document.getElementById(forms);
+		const total = document.getElementById('total');
 		const successText = 'Успешно! С вами свяжется наш специалист';
 		const errorText = 'Ошибка..';
+		let prelouder = document.createElement('div');
+
+		prelouder.classList.add('prelouder');
+		prelouder.innerHTML = `<img src = "images/prelouder.gif" alt = "prelouder">`
 		let statusBlock = document.createElement('div');
-		statusBlock.classList.add('inform')
+		statusBlock.classList.add('inform');
 
-		const validate = (list) => {
+		const isEmailValid = (emailValue) => {
+			const emailRegexp = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+			return emailRegexp.test(emailValue)
+		}
+
+		const validate = (list) => {												//запомнить!!!проверка
 			let sucsess = true;
-			const inputName = list[0];
-			const inputEmail = list[1];
-			const inputPhone = list[2];
-
 			list.forEach(input => {
-				const changeName = /^[а-яА-ЯёЁ\s]+[а-яА-ЯёЁ]*$/gi
-				const changeEmail = /(([\-\~\_\!\'\s\.\*\d\w]+)(@)([\w]+\.)+([\w]{2,4}))/gi
-				const changePhone = /([\d\(\)\+]*[\d\-]{4,15})/gi
-
-				if (changeName.test(inputName.value) && inputName.value !== '') {
-					sucsess = true;
-				} else {
-					sucsess = false;
+				if (input.name === "user_name") {
+					if (input.value.length < 3) {
+						sucsess = false
+					}
 				}
-				if (changeEmail.test(inputEmail.value) && inputEmail.value !== '') {
-					sucsess = true;
-				} else {
-					sucsess = false;
+				else if (input.name === "user_email") {
+					if (!isEmailValid(input.value)) {
+						sucsess = false
+					}
 				}
-				if (changePhone.test(inputPhone.value) && inputPhone.value !== '') {
-					sucsess = true;
-				} else {
-					sucsess = false;
+				else if (input.name === "user_phone") {
+					if (input.value.length < 9) {
+						sucsess = false
+					}
 				}
 			})
 			return sucsess
@@ -53,14 +51,13 @@ const sendForm = ({ formId, someElem = [] }) => {
 		const submitForm = () => {
 			const formElements = form.querySelectorAll('input');
 			const formData = new FormData(form);
-			const formBody = {}   																					//собираем обьект
-
+			const formBody = {}   																//собираем обьект
+																
 			form.append(prelouder)
 			setTimeout(() => {
 				prelouder.classList.add('hide-prelouder')
 			}, 1500)
 			form.append(statusBlock);
-
 			formData.forEach((val, key) => {
 				formBody[key] = val;
 			})
@@ -74,22 +71,29 @@ const sendForm = ({ formId, someElem = [] }) => {
 				}
 			})
 
-			if (!document.querySelector("#form2-message").value.trim()) {							//чтобы сообщение не уходило на отправку-костыль
+			if (!document.querySelector("#form2-message").value.trim()) {						//текс не отправляется	
 				delete formBody.user_message;
+			}
+
+			if (total.textContent == "0") {														//total не выскакивает
+				delete formBody.total
 			}
 
 			if (validate(formElements)) {
 				sendData(formBody)
 					.then(data => {
-						statusBlock.textContent = successText
+						statusBlock.textContent = successText;
 						formElements.forEach(input => {
-							input.value = ''             											 //убираем содержимое полей
-						})
+							input.value = ''
+							setTimeout(() => {													//убирается оповещение
+								statusBlock.textContent = ''
+							}, 4000)           											 
+						});
 					})
 					.catch(error => statusBlock.textContent = errorText);
 			} else {
-				alert('Данные не валидны!');
 				statusBlock.textContent = errorText;
+				alert('Данные не валидны!');
 			}
 		}
 

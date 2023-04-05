@@ -16,19 +16,15 @@ const culc = (price = 100) => {
 
 		if (calcCount.value > 1) {
 			culcCountValue = culcCountValue + (calcCount.value / 10);
-			console.log(calcCount.value);
 		}
 
 		if (calcDay.value && calcDay.value < 5) {
 			calcDayValue = 2;
 		} else if (calcDay.value && calcDay.value < 10) {
 			calcDayValue = 1.5;
-			console.log(calcDay.value);
 		}
 
 		if (culcType.value && calcSquare.value) {
-			console.log(culcType.value);
-			console.log(calcSquare.value);
 			totalPrice = price * culcTypeValue * calcSquareValue * culcCountValue * calcDayValue;
 			animateNum(totalPrice, total);
 		} else {

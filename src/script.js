@@ -7,17 +7,19 @@ import scroll from './modules/scroll'
 import addDots from './modules/adddots'
 import slider from './modules/slider'
 import culc from './modules/culc'
+import checkCulcalate from './modules/checkCulc'
 import sendForm from './modules/sendForm'
 
-timer('4 aprel 2023')
+timer('8 april 2023')
 menu()
 scroll()
-checkForms()
 modal()
 tabs()
 addDots()
 slider('portfolio-content', 'portfolio-item')
+checkCulcalate()
 culc(200)
+checkForms()
 sendForm({
 	formId: ['form1', 'form2', 'form3',],
 	someElem: [

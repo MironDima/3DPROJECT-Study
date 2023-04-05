@@ -1,15 +1,13 @@
 const scroll = () => {
 	const menuItems = document.querySelectorAll('ul > li > a');
 	const anchorBtnService = document.querySelectorAll('a[href = "#service-block"]');
-
 	menuItems.forEach(menuItems => {
 		menuItems.addEventListener('click', (e) => {
 			e.preventDefault()
 			const blockId = menuItems.getAttribute('href').substring(1);
 			document.getElementById(blockId).scrollIntoView({
 				behavior: 'smooth',
-				block: "center",
-				inline: 'center'
+				block: "start",
 			});
 		});
 	});
@@ -20,7 +18,7 @@ const scroll = () => {
 			const btnSecvice = btn.getAttribute('href').substring(1);
 			document.getElementById(btnSecvice).scrollIntoView({
 				behavior: 'smooth',
-				block: 'center'
+				block: 'start',
 			});
 		});
 	});
