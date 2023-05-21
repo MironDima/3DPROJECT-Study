@@ -10,7 +10,7 @@ import culc from './modules/culc'
 import checkCulcalate from './modules/checkCulc'
 import sendForm from './modules/sendForm'
 
-timer('8 april 2023')
+timer('30 may 2023')
 menu()
 scroll()
 modal()

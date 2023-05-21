@@ -6,7 +6,7 @@ const tabs = () => {
 	tabPanel.addEventListener('click', (e) => {
 		if (e.target.closest('.service-header-tab')) {
 			const newTabs = e.target.closest('.service-header-tab');			//чтобы наши табы переклюались вместе с спаном,мы сравниваем с нашей новой кнопкой
-
+			
 			tabs.forEach((tab, index) => {
 				if (tab === newTabs) {
 					tab.classList.add('active');

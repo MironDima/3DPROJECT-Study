@@ -57,7 +57,9 @@ const sendForm = ({ formId, someElem = [] }) => {
 			setTimeout(() => {
 				prelouder.classList.add('hide-prelouder')
 			}, 1500)
+			
 			form.append(statusBlock);
+
 			formData.forEach((val, key) => {
 				formBody[key] = val;
 			})
